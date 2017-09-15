@@ -6,8 +6,8 @@ GOPATH := $(shell pwd):$(shell pwd)/vendor
 export GOPATH
 export CGO_ENABLED=0
 
-NAME=new-relic-exporter
-PACKAGE=github.com/nickschuch/$(NAME)
+NAME=newrelic-exporter
+PACKAGE=github.com/previousnext/$(NAME)
 
 # Build binaries for linux/amd64 and darwin/amd64
 build:

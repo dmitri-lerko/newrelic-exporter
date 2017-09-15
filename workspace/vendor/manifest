@@ -101,6 +101,13 @@
 			"path": "/internal/bitbucket.org/ww/goautoneg"
 		},
 		{
+			"importpath": "github.com/prometheus/common/log",
+			"repository": "https://github.com/prometheus/common",
+			"revision": "2f17f4a9d485bf34b4bfaccc273805040e4f86c8",
+			"branch": "master",
+			"path": "/log"
+		},
+		{
 			"importpath": "github.com/prometheus/common/model",
 			"repository": "https://github.com/prometheus/common",
 			"revision": "2f17f4a9d485bf34b4bfaccc273805040e4f86c8",
@@ -114,11 +121,37 @@
 			"branch": "master"
 		},
 		{
+			"importpath": "github.com/sirupsen/logrus",
+			"repository": "https://github.com/sirupsen/logrus",
+			"revision": "89742aefa4b206dcf400792f3bd35b542998eb3b",
+			"branch": "master"
+		},
+		{
+			"importpath": "golang.org/x/crypto/ssh/terminal",
+			"repository": "https://go.googlesource.com/crypto",
+			"revision": "faadfbdc035307d901e69eea569f5dda451a3ee3",
+			"branch": "master",
+			"path": "/ssh/terminal"
+		},
+		{
 			"importpath": "golang.org/x/net/publicsuffix",
 			"repository": "https://go.googlesource.com/net",
 			"revision": "b129b8e0fbeb39c8358e51a07ab6c50ad415e72e",
 			"branch": "master",
 			"path": "/publicsuffix"
+		},
+		{
+			"importpath": "golang.org/x/sys/unix",
+			"repository": "https://go.googlesource.com/sys",
+			"revision": "062cd7e4e68206d8bab9b18396626e855c992658",
+			"branch": "master",
+			"path": "/unix"
+		},
+		{
+			"importpath": "gopkg.in/alecthomas/kingpin.v2",
+			"repository": "https://gopkg.in/alecthomas/kingpin.v2",
+			"revision": "1087e65c9441605df944fb12c33f0fe7072d18ca",
+			"branch": "master"
 		}
 	]
 }
