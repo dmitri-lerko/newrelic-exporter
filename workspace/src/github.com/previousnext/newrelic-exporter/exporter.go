@@ -10,6 +10,7 @@ import (
 
 const namespace = "newrelic"
 
+// Exporter is a custom Prometheus metrics exporter.
 type Exporter struct {
 	mutex sync.Mutex
 
@@ -25,6 +26,7 @@ type Exporter struct {
 	instanceCount *prometheus.Desc
 }
 
+// NewExporter instantiates a new Prometheus metrics exporter.
 func NewExporter(name, key string) *Exporter {
 	labels := map[string]string{
 		"newrelic_application": name,
@@ -71,6 +73,7 @@ func NewExporter(name, key string) *Exporter {
 	}
 }
 
+// Describe is used to list our New Relic metrics.
 func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 	ch <- e.responseTime
 	ch <- e.throughput
@@ -81,6 +84,7 @@ func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 	ch <- e.instanceCount
 }
 
+// Collect is collects our new metrics.
 func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	// To protect metrics from concurrent collects.
 	e.mutex.Lock()
