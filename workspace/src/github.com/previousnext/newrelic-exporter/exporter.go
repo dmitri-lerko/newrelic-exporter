@@ -14,8 +14,8 @@ const namespace = "newrelic"
 type Exporter struct {
 	mutex sync.Mutex
 
-	name   string
-	client newrelic.Client
+	name string
+	key  string
 
 	responseTime  *prometheus.Desc
 	throughput    *prometheus.Desc
@@ -33,8 +33,8 @@ func NewExporter(name, key string) *Exporter {
 	}
 
 	return &Exporter{
-		name:   name,
-		client: newrelic.New(key),
+		name: name,
+		key:  key,
 		responseTime: prometheus.NewDesc(
 			prometheus.BuildFQName(namespace, "", "response_time"),
 			"The duration of time between a request for service and a response.",
@@ -90,7 +90,7 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	e.mutex.Lock()
 	defer e.mutex.Unlock()
 
-	app, err := e.client.Application(e.name)
+	app, err := newrelic.New(e.key).Application(e.name)
 	if err != nil {
 		log.Errorf("Failed to load New Relic application: %s", err)
 	}
