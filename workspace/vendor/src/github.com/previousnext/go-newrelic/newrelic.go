@@ -66,7 +66,7 @@ func New(key string) Client {
 }
 
 // NameToApplicationID returns an App ID based on App Name.
-func (n *Client) NameToApplicationID(name string) (int64, error) {
+func (n Client) NameToApplicationID(name string) (int64, error) {
 	resp, err := n.ListApplications()
 	if err != nil {
 		return 0, err
@@ -82,7 +82,7 @@ func (n *Client) NameToApplicationID(name string) (int64, error) {
 }
 
 // Application returns an Application status.
-func (n *Client) Application(name string) (Application, error) {
+func (n Client) Application(name string) (Application, error) {
 	var app Application
 
 	resp, err := n.ListApplications()
@@ -100,7 +100,7 @@ func (n *Client) Application(name string) (Application, error) {
 }
 
 // ListApplications returns a list of applications.
-func (n *Client) ListApplications() (Applications, error) {
+func (n Client) ListApplications() (Applications, error) {
 	var apps Applications
 
 	_, _, errs := gorequest.New().Get("https://api.newrelic.com/v2/applications.json").
@@ -121,7 +121,7 @@ func (n *Client) ListApplications() (Applications, error) {
 
 // Deployment sends a deployment tag to a New Relic application.
 // https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/recording-deployments
-func (n *Client) Deployment(id int64, d DeploymentInput) error {
+func (n Client) Deployment(id int64, d DeploymentInput) error {
 	_, body, errs := gorequest.New().Post(fmt.Sprintf("https://api.newrelic.com/v2/applications/%d/deployments.json", id)).
 		Set("X-Api-Key", n.key).
 		Set("Content-Type", "application/json").
